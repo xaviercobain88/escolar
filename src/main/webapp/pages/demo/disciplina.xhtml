@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/templates/default.xhtml">
+	<ui:define name="content">
+	#{mockController.cambiarFaseD}
+		<p:tabView dynamic="true" id="tabView"
+			activeIndex="#{mockController.tabIndex}">
+			<p:tab title="Disciplina">
+				<h:form id="formulario1">
+					<h:panelGrid columns="1" styleClass="alineado">
+						<p:dataTable var="persona" value="#{mockController.personasList}"
+							id="disciplinaTable">
+							<p:focus context="formulario1" />
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="No." />
+								</f:facet>
+								<h:outputText value="#{persona.orden}" />
+							</p:column>
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Nombre" />
+								</f:facet>
+								<h:outputText value="#{persona.nombre}" />
+							</p:column>
+
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Parcial 1" />
+								</f:facet>
+								<p:selectOneMenu value="#{persona.db1}" id="db1" tabindex="1"
+									rendered="#{(mockController.faseD eq 1)}"
+									styleClass="estilo-#{persona.db1}">
+									<p:ajax event="change" oncomplete="generarEstilosTabla();"
+										update=":tabView:formulario1:disciplinaTable:db1" />
+									<f:selectItems
+										value="#{mockController.disciplinaSelectItemList}">
+
+									</f:selectItems>
+								</p:selectOneMenu>
+								<h:outputText value="#{persona.db1}"
+									rendered="#{!(mockController.faseD eq 1)}"
+									styleClass="estilo-#{persona.db1}" />
+							</p:column>
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Parcial 2" />
+								</f:facet>
+								<p:selectOneMenu value="#{persona.db2}" id="db2" tabindex="1"
+									rendered="#{(mockController.faseD eq 2)}"
+									styleClass="estilo-#{persona.db2}">
+									<p:ajax event="change" oncomplete="generarEstilosTabla();"
+										update=":tabView:formulario1:disciplinaTable:db2" />
+									<f:selectItems
+										value="#{mockController.disciplinaSelectItemList}">
+
+									</f:selectItems>
+								</p:selectOneMenu>
+								<h:outputText value="#{persona.db2}"
+									rendered="#{!(mockController.faseD eq 2)}"
+									styleClass="estilo-#{persona.db2}" />
+							</p:column>
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Parcial 3" />
+								</f:facet>
+								<p:selectOneMenu value="#{persona.db3}" id="db3" tabindex="1"
+									rendered="#{(mockController.faseD eq 3)}"
+									styleClass="estilo-#{persona.db3}">
+									<p:ajax event="change" oncomplete="generarEstilosTabla();"
+										update=":tabView:formulario1:disciplinaTable:db3" />
+									<f:selectItems
+										value="#{mockController.disciplinaSelectItemList}">
+
+									</f:selectItems>
+								</p:selectOneMenu>
+								<h:outputText value="#{persona.db3}"
+									rendered="#{!(mockController.faseD eq 3)}"
+									styleClass="estilo-#{persona.db3}" />
+							</p:column>
+
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Parcial 4" />
+								</f:facet>
+								<h:outputText value="#{persona.db3}"
+									styleClass="estilo-#{persona.db3}" />
+							</p:column>
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Quimestre 1" />
+								</f:facet>
+								<p:selectOneMenu value="#{persona.dq1}" id="dq1"
+									rendered="#{(mockController.faseD eq 4)}" tabindex="1"
+									styleClass="estilo-#{persona.dq1}">
+									<p:ajax event="change" oncomplete="generarEstilosTabla();"
+										update=":tabView:formulario1:disciplinaTable:dq1" />
+									<f:selectItems
+										value="#{mockController.disciplinaSelectItemList}">
+
+									</f:selectItems>
+								</p:selectOneMenu>
+								<h:outputText value="#{persona.dq1}"
+									rendered="#{!(mockController.faseD eq 4)}"
+									styleClass="estilo-#{persona.dq1}" />
+							</p:column>
+
+
+
+
+
+
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Parcial 1" />
+								</f:facet>
+								<p:selectOneMenu value="#{persona.db4}" id="db4" tabindex="1"
+									rendered="#{(mockController.faseD eq 5)}"
+									styleClass="estilo-#{persona.db4}">
+									<p:ajax event="change" oncomplete="generarEstilosTabla();"
+										update=":tabView:formulario1:disciplinaTable:db4" />
+									<f:selectItems
+										value="#{mockController.disciplinaSelectItemList}">
+
+									</f:selectItems>
+								</p:selectOneMenu>
+								<h:outputText value="#{persona.db4}"
+									rendered="#{!(mockController.faseD eq 5)}"
+									styleClass="estilo-#{persona.db4}" />
+							</p:column>
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Parcial 2" />
+								</f:facet>
+								<p:selectOneMenu value="#{persona.db5}" id="db5" tabindex="1"
+									rendered="#{(mockController.faseD eq 6)}"
+									styleClass="estilo-#{persona.db5}">
+									<p:ajax event="change" oncomplete="generarEstilosTabla();"
+										update=":tabView:formulario1:disciplinaTable:db5" />
+									<f:selectItems
+										value="#{mockController.disciplinaSelectItemList}">
+
+									</f:selectItems>
+								</p:selectOneMenu>
+								<h:outputText value="#{persona.db5}"
+									rendered="#{!(mockController.faseD eq 6)}"
+									styleClass="estilo-#{persona.db5}" />
+							</p:column>
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Parcial 3" />
+								</f:facet>
+								<p:selectOneMenu value="#{persona.db6}" id="db6" tabindex="1"
+									rendered="#{(mockController.faseD eq 7)}"
+									styleClass="estilo-#{persona.db6}">
+									<p:ajax event="change" oncomplete="generarEstilosTabla();"
+										update=":tabView:formulario1:disciplinaTable:db6" />
+									<f:selectItems
+										value="#{mockController.disciplinaSelectItemList}">
+
+									</f:selectItems>
+								</p:selectOneMenu>
+								<h:outputText value="#{persona.db6}"
+									rendered="#{!(mockController.faseD eq 7)}"
+									styleClass="estilo-#{persona.db6}" />
+							</p:column>
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Parcial 4" />
+								</f:facet>
+								<h:outputText value="#{persona.db6}"
+									styleClass="estilo-#{persona.db6}" />
+							</p:column>
+
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Quimestre 2" />
+								</f:facet>
+								<p:selectOneMenu value="#{persona.dq2}" id="dq2"
+									rendered="#{(mockController.faseD eq 8)}" tabindex="1"
+									styleClass="estilo-#{persona.dq2}">
+									<p:ajax event="change" oncomplete="generarEstilosTabla();"
+										update=":tabView:formulario1:disciplinaTable:dq2" />
+									<f:selectItems
+										value="#{mockController.disciplinaSelectItemList}">
+
+									</f:selectItems>
+								</p:selectOneMenu>
+								<h:outputText value="#{persona.dq2}"
+									rendered="#{!(mockController.faseD eq 8)}"
+									styleClass="estilo-#{persona.dq2}" />
+							</p:column>
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Final" />
+								</f:facet>
+								<p:selectOneMenu value="#{persona.da}" id="da"
+									rendered="#{(mockController.faseD eq 9)}" tabindex="1"
+									styleClass="estilo-#{persona.da}">
+									<p:ajax event="change" oncomplete="generarEstilosTabla();"
+										update=":tabView:formulario1:disciplinaTable:da" />
+									<f:selectItems
+										value="#{mockController.disciplinaSelectItemList}">
+
+									</f:selectItems>
+								</p:selectOneMenu>
+								<h:outputText value="#{persona.da}"
+									rendered="#{!(mockController.faseD eq 9)}"
+									styleClass="estilo-#{persona.da}" />
+							</p:column>
+						</p:dataTable>
+					</h:panelGrid>
+
+				</h:form>
+			</p:tab>
+
+
+		</p:tabView>
+	</ui:define>
+</ui:composition>

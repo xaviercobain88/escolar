@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/templates/default.xhtml">
+	<ui:define name="content">
+		<p:panel header="Búsqueda" toggleable="true"
+			toggleOrientation="horizontal">
+			<h:form id="formBusqueda">
+				<h:panelGrid columns="4">
+
+					<h:panelGrid columns="1" styleClass="panelesComboBox">
+						<h:outputText value="Curso"
+							styleClass="ui-orderlist-caption ui-widget-header ui-corner-top" />
+						<p:selectOneListbox styleClass="subPanelesComboBox">
+							<f:selectItems value="#{mockController.cursoString}"></f:selectItems>
+						</p:selectOneListbox>
+					</h:panelGrid>
+
+
+
+				</h:panelGrid>
+
+
+			</h:form>
+		</p:panel>
+		<p:tabView dynamic="true" id="tabView">
+			<p:tab title="Registro de Faltas">
+				<h:form id="formulario1">
+
+					<p:dataTable var="persona" value="#{mockController.personasList}"
+						id="anualTable"
+						rowStyleClass="#{(persona.dt gt 39) ? 'rojo':'blanco'}">
+
+						<p:columnGroup type="header">
+							<p:row>
+								<p:column rowspan="3" headerText="Nombre" />
+								<p:column colspan="8" headerText="Quimestre 1" />
+								<p:column colspan="8" headerText="Quimestre 2" />
+								<p:column colspan="2" rowspan="2" headerText="Total" />
+								<p:column rowspan="3" headerText="Procentaje" />
+							</p:row>
+
+
+							<p:row>
+								<p:column headerText="Parcial 1" colspan="2" />
+								<p:column headerText="Parcial 2" colspan="2" />
+								<p:column headerText="Parcial 3" colspan="2" />
+								<p:column headerText="Parcial 4" colspan="2" />
+								<p:column headerText="Parcial 1" colspan="2" />
+								<p:column headerText="Parcial 2" colspan="2" />
+								<p:column headerText="Parcial 3" colspan="2" />
+								<p:column headerText="Parcial 4" colspan="2" />
+							</p:row>
+
+							<p:row>
+								<p:column headerText="J" />
+								<p:column headerText="I" />
+								<p:column headerText="J" />
+								<p:column headerText="I" />
+								<p:column headerText="J" />
+								<p:column headerText="I" />
+								<p:column headerText="J" />
+								<p:column headerText="I" />
+								<p:column headerText="J" />
+								<p:column headerText="I" />
+								<p:column headerText="J" />
+								<p:column headerText="I" />
+								<p:column headerText="J" />
+								<p:column headerText="I" />
+								<p:column headerText="J" />
+								<p:column headerText="I" />
+								<p:column headerText="J" />
+								<p:column headerText="I" />
+
+							</p:row>
+						</p:columnGroup>
+
+
+
+						<p:column>
+							<h:outputText value="#{persona.nombre}" />
+						</p:column>
+
+						<p:column>
+							<p:inputText size="2" value="#{persona.d1}">
+								<p:ajax process="@this" event="blur"
+									listener="#{mockController.calcularDisciplina() }"
+									update="@form"></p:ajax>
+							</p:inputText>
+						</p:column>
+						<p:column>
+							<h:outputText style="width:20px" value="#{persona.d1j}" />
+						</p:column>
+						<p:column>
+							<p:inputText size="2" value="#{persona.d2}">
+								<p:ajax process="@this" event="blur"
+									listener="#{mockController.calcularDisciplina() }"
+									update="@form"></p:ajax>
+							</p:inputText>
+						</p:column>
+						<p:column>
+							<h:outputText style="width:20px" value="#{persona.d2j}" />
+						</p:column>
+						<p:column>
+							<p:inputText size="2" value="#{persona.d3}">
+								<p:ajax process="@this" event="blur"
+									listener="#{mockController.calcularDisciplina() }"
+									update="@form"></p:ajax>
+							</p:inputText>
+						</p:column>
+						<p:column>
+							<h:outputText style="width:20px" value="#{persona.d3j}" />
+						</p:column>
+						<p:column>
+							<p:inputText size="2" value="#{persona.d4}">
+								<p:ajax process="@this" event="blur"
+									listener="#{mockController.calcularDisciplina() }"
+									update="@form"></p:ajax>
+							</p:inputText>
+						</p:column>
+						<p:column>
+							<h:outputText style="width:20px" value="#{persona.d4j}" />
+						</p:column>
+						<p:column>
+							<p:inputText size="2" value="#{persona.d5}">
+								<p:ajax process="@this" event="blur"
+									listener="#{mockController.calcularDisciplina() }"
+									update="@form"></p:ajax>
+							</p:inputText>
+						</p:column>
+						<p:column>
+							<h:outputText style="width:20px" value="#{persona.d5j}" />
+						</p:column>
+						<p:column>
+							<p:inputText size="2" value="#{persona.d6}">
+								<p:ajax process="@this" event="blur"
+									listener="#{mockController.calcularDisciplina() }"
+									update="@form"></p:ajax>
+							</p:inputText>
+						</p:column>
+						<p:column>
+							<h:outputText style="width:20px" value="#{persona.d6j}" />
+						</p:column>
+						<p:column>
+							<p:inputText size="2" value="#{persona.d7}">
+								<p:ajax process="@this" event="blur"
+									listener="#{mockController.calcularDisciplina() }"
+									update="@form"></p:ajax>
+							</p:inputText>
+						</p:column>
+						<p:column>
+							<h:outputText style="width:20px" value="#{persona.d7j}" />
+						</p:column>
+						<p:column>
+							<p:inputText size="2" value="#{persona.d8}">
+								<p:ajax process="@this" event="blur"
+									listener="#{mockController.calcularDisciplina() }"
+									update="@form"></p:ajax>
+							</p:inputText>
+						</p:column>
+						<p:column>
+							<h:outputText style="width:20px" value="#{persona.d8j}" />
+						</p:column>
+
+						<p:column>
+							<h:outputText style="width:20px" value="#{persona.dt}" />
+						</p:column>
+						<p:column>
+							<h:outputText style="width:20px" value="#{persona.it}" />
+						</p:column>
+						<p:column>
+							<h:outputText style="width:20px" value="#{persona.td}" />
+						</p:column>
+
+
+					</p:dataTable>
+					<h:panelGrid columns="2">
+						<p:commandButton value="Guardar"
+							action="#{mockController.guardar()}"></p:commandButton>
+						<p:commandButton value="Cancelar"></p:commandButton>
+					</h:panelGrid>
+
+				</h:form>
+			</p:tab>
+
+
+
+		</p:tabView>
+	</ui:define>
+</ui:composition>

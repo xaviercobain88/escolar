@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/templates/default.xhtml">
+	<ui:define name="content">
+		<p:tabView dynamic="true" widgetVar="widget" id="tabGrande">
+			<p:tab title="Materias Institucionales">
+				<h:form id="formulario1">
+					<p:commandButton action="#{mockController.nuevaMateria()}"
+						value="Nueva" onclick="widget.select(1)" update="@(.ui-tabs-panel :input)">
+
+					</p:commandButton>
+					<h:panelGrid columns="3" styleClass="alineado">
+						<p:dataTable var="materia" value="#{mockController.materiaList}"
+							rowIndexVar="index" id="tabla">
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="No." />
+								</f:facet>
+								<h:outputText value="#{index+1}" />
+							</p:column>
+
+							<p:column style="width:100px;">
+								<f:facet name="header">
+									<h:outputText value="Materia" />
+								</f:facet>
+								<h:outputText value="#{materia.nombre}" />
+							</p:column>
+							<p:column style="width:460px;">
+								<f:facet name="header">
+									<h:outputText value="Descripción" />
+								</f:facet>
+								<h:outputText value="#{materia.descripcion}" />
+							</p:column>
+
+
+							<p:column  style="width:100px;">
+								<f:facet name="header">
+									<h:outputText value="Opciones" />
+								</f:facet>
+								<p:commandButton icon="ui-icon-pencil" title="Editar"
+									onclick="widget.select(1)" update="@(.ui-tabs-panel :input)">
+									<f:setPropertyActionListener value="#{materia}"
+										target="#{mockController.materiaSeleccionada}" />
+								</p:commandButton>
+								<p:commandButton icon="ui-icon-closethick" title="Eliminar"
+									onclick="confirmation.show()">
+									<f:setPropertyActionListener value="#{materia}"
+										target="#{mockController.materiaSeleccionada}" />
+								</p:commandButton>
+							</p:column>
+						</p:dataTable>
+					</h:panelGrid>
+					<p:confirmDialog id="confirmDialog"
+						message="¿Esta seguro que desea eliminar la materia?"
+						header="Advertencia" severity="alert" widgetVar="confirmation">
+
+						<p:commandButton id="confirm" value="Si"
+							oncomplete="confirmation.hide()" />
+						<p:commandButton id="decline" value="Cancelar"
+							onclick="confirmation.hide()" type="button" />
+
+					</p:confirmDialog>
+
+				</h:form>
+			</p:tab>
+			<p:tab title="Edición de Materia" id="tab2">
+				<h:form id="formulario2">
+					<h:panelGrid columns="2">
+
+						<h:outputText styleClass="bold" value="Nombre" />
+						<p:inputText size="50"
+							value="#{mockController.materiaSeleccionada.nombre}">
+						</p:inputText>
+
+						<h:outputText styleClass="bold" value="Descripción" />
+						<p:inputTextarea cols="50"
+							value="#{mockController.materiaSeleccionada.descripcion}">
+						</p:inputTextarea>
+						<h:outputText styleClass="bold" value="Contenidos" />
+						<p:inputTextarea cols="50"
+							value="#{mockController.materiaSeleccionada.contenidos}">
+						</p:inputTextarea>
+					</h:panelGrid>
+
+					<p:commandButton value="Guardar" partialSubmit="true"
+						action="#{mockController.guardar()}" onclick="widget.select(0)" process="@this"></p:commandButton>
+					<p:commandButton value="Cancelar"  process="@this" partialSubmit="true"  onclick="widget.select(0)" ></p:commandButton>
+
+				</h:form>
+
+			</p:tab>
+		</p:tabView>
+	</ui:define>
+</ui:composition>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/templates/default.xhtml">
+	<ui:define name="content">
+	<ui:include src="/pages/busqueda/busqueda-curso.xhtml" />
+
+		<p:tabView dynamic="true" id="tabView">
+			<p:tab title="Pases de Año">
+				<h:form id="formulario1">
+
+					<h:panelGrid columns="1" styleClass="alineado">
+						<h:outputText
+							value="Al pulsar en el botón se generará un archivo en formato PDF con los pases de año del curso seleccionado" />
+						<p:commandButton value="Generar" ajax="false"></p:commandButton>
+					</h:panelGrid>
+
+				</h:form>
+			</p:tab>
+
+
+
+		</p:tabView>
+	</ui:define>
+</ui:composition>

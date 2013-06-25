@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/templates/default.xhtml">
+	<ui:define name="content">
+		<p:tabView dynamic="true">
+			<p:tab title="Primer Quimestre">
+				<h:form id="formulario1">
+					<h:panelGrid columns="1">
+						<h:outputText value="Fechas para de ingreso de notas para el Primer Quimestre"
+							style="color: red" />
+						<h:panelGrid columns="3">
+							<h:panelGrid columns="1">
+								<h:outputText value="Fecha de apertura del sistema: " />
+								<p:calendar value="#{mockController.q1IDate}" mode="inline"></p:calendar>
+							</h:panelGrid>
+							<p:spacer width="50px"></p:spacer>
+							<h:panelGrid columns="1">
+								<h:outputText value="Fecha de cierre del sistema: " />
+								<p:calendar value="#{mockController.q1FDate}" mode="inline"></p:calendar>
+							</h:panelGrid>
+						</h:panelGrid>
+
+						<p:spacer height="20px"></p:spacer>
+						<h:outputText value="Fechas de ingreso de notas para el Exámen de Recuperación"
+							style="color: red" />
+						<h:panelGrid columns="3">
+							<h:panelGrid columns="1">
+								<h:outputText value="Fecha de apertura del sistema: " />
+								<p:calendar value="#{mockController.r1IDate}" mode="inline"></p:calendar>
+							</h:panelGrid>
+							<p:spacer width="50px"></p:spacer>
+							<h:panelGrid columns="1">
+								<h:outputText value="Fecha de cierre del sistema: " />
+								<p:calendar value="#{mockController.r1FDate}" mode="inline"></p:calendar>
+							</h:panelGrid>
+						</h:panelGrid>
+
+					</h:panelGrid>
+
+
+
+					<p:commandButton value="Guardar"
+						action="#{mockController.guardar()}"></p:commandButton>
+
+
+
+
+				</h:form>
+			</p:tab>
+			<p:tab title="Segundo Quimestre">
+				<h:form id="formulario2">
+
+
+					<h:panelGrid columns="1">
+						<h:outputText value="Fechas de ingreso de notas para el Segundo Quimestre"
+							style="color: red" />
+						<h:panelGrid columns="3">
+							<h:panelGrid columns="1">
+								<h:outputText value="Fecha de apertura del sistema: " />
+								<p:calendar value="#{mockController.q2IDate}" mode="inline"></p:calendar>
+							</h:panelGrid>
+							<p:spacer width="50px"></p:spacer>
+							<h:panelGrid columns="1">
+								<h:outputText value="Fecha de cierre del sistema: " />
+								<p:calendar value="#{mockController.q2FDate}" mode="inline"></p:calendar>
+							</h:panelGrid>
+						</h:panelGrid>
+
+						<p:spacer height="20px"></p:spacer>
+						<h:outputText value="Fechas de ingreso de notas para el Exámen de Recuperación"
+							style="color: red" />
+						<h:panelGrid columns="3">
+							<h:panelGrid columns="1">
+								<h:outputText value="Fecha de apertura del sistema: " />
+								<p:calendar value="#{mockController.r2IDate}" mode="inline"></p:calendar>
+							</h:panelGrid>
+							<p:spacer width="50px"></p:spacer>
+							<h:panelGrid columns="1">
+								<h:outputText value="Fecha de cierre del sistema: " />
+								<p:calendar value="#{mockController.r2FDate}" mode="inline"></p:calendar>
+							</h:panelGrid>
+						</h:panelGrid>
+
+					</h:panelGrid>
+
+
+					<p:commandButton value="Guardar"
+						action="#{mockController.guardar()}"></p:commandButton>
+
+				</h:form>
+			</p:tab>
+			<p:tab title="Exámen Supletorio">
+				<h:form id="formulario4">
+
+					<h:panelGrid columns="1">
+						<h:outputText value="Fechas de ingreso de notas para el Exámen Supletorio "
+							style="color: red" />
+						<h:panelGrid columns="3">
+							<h:panelGrid columns="1">
+								<h:outputText value="Fecha de apertura del sistema: " />
+								<p:calendar value="#{mockController.supletorioIDate}"
+									mode="inline"></p:calendar>
+							</h:panelGrid>
+							<p:spacer width="50px"></p:spacer>
+							<h:panelGrid columns="1">
+								<h:outputText value="Fecha de cierre del sistema: " />
+								<p:calendar value="#{mockController.supletorioFDate}"
+									mode="inline"></p:calendar>
+							</h:panelGrid>
+						</h:panelGrid>
+
+					</h:panelGrid>
+
+
+					<p:commandButton value="Guardar"
+						action="#{mockController.guardar()}"></p:commandButton>
+				</h:form>
+			</p:tab>
+
+			<p:tab title="Exámen remedial">
+				<h:form id="formulario5">
+
+					<h:panelGrid columns="1">
+						<h:outputText value="Fechas de ingreso de notas para el Exámen Remedial "
+							style="color: red" />
+						<h:panelGrid columns="3">
+							<h:panelGrid columns="1">
+								<h:outputText value="Fecha de apertura del sistema: " />
+								<p:calendar value="#{mockController.remedialIDate}"
+									mode="inline"></p:calendar>
+							</h:panelGrid>
+							<p:spacer width="50px"></p:spacer>
+							<h:panelGrid columns="1">
+								<h:outputText value="Fecha de cierre del sistema: " />
+								<p:calendar value="#{mockController.remedialFDate}"
+									mode="inline"></p:calendar>
+							</h:panelGrid>
+						</h:panelGrid>
+
+					</h:panelGrid>
+
+
+
+
+					<p:commandButton value="Guardar"
+						action="#{mockController.guardar()}"></p:commandButton>
+
+				</h:form>
+			</p:tab>
+			<p:tab title="Exámen de gracia">
+				<h:form id="formulario6">
+					<h:panelGrid columns="1">
+						<h:outputText value="Fechas de ingreso de notas para el Exámen de Gracia "
+							style="color: red" />
+						<h:panelGrid columns="3">
+							<h:panelGrid columns="1">
+								<h:outputText value="Fecha de apertura del sistema: " />
+								<p:calendar value="#{mockController.graciIDate}" mode="inline"></p:calendar>
+							</h:panelGrid>
+							<p:spacer width="50px"></p:spacer>
+							<h:panelGrid columns="1">
+								<h:outputText value="Fecha de cierre del sistema: " />
+								<p:calendar value="#{mockController.graciFDate}" mode="inline"></p:calendar>
+							</h:panelGrid>
+						</h:panelGrid>
+
+					</h:panelGrid>
+
+					<p:commandButton value="Guardar"
+						action="#{mockController.guardar()}"></p:commandButton>
+				</h:form>
+			</p:tab>
+
+		</p:tabView>
+	</ui:define>
+</ui:composition>

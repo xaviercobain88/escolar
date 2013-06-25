@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+#{busquedaPerfilAction.init}
+<p:panel header="Búsqueda" toggleable="true"
+	toggleOrientation="horizontal"
+	rendered="#{busquedaPerfilDM.permitirPantalla}">
+	<h:form id="formBusqueda">
+		<h:panelGrid columns="2">
+			<h:panelGrid columns="1" styleClass="panelesComboBox">
+				<h:outputText value="Rol"
+					styleClass="ui-orderlist-caption ui-widget-header ui-corner-top" />
+				<p:selectOneListbox value="#{busquedaPerfilDM.idRolSeleccionado}"
+					styleClass="subPanelesComboBox">
+					<f:selectItems value="#{busquedaPerfilDM.rolSelectItemList}"></f:selectItems>
+				</p:selectOneListbox>
+			</h:panelGrid>
+			<h:panelGrid columns="2">
+				<p:outputLabel value="Apellidos" for="apellidoBusquedaTxt"></p:outputLabel>
+				<p:inputText value="#{busquedaPerfilDM.apellidos}"
+					id="apellidoBusquedaTxt"></p:inputText>
+				<p:outputLabel value="Cédula de ciudadanía" for="ciBusquedaTxt"></p:outputLabel>
+				<p:inputText value="#{busquedaPerfilDM.ci}" id="ciBusquedaTxt"></p:inputText>
+				<p:outputLabel value="Usuario" for="usuarioBusquedaTxt"></p:outputLabel>
+				<p:inputText value="#{busquedaPerfilDM.usuario}"
+					id="usuarioBusquedaTxt"></p:inputText>
+			</h:panelGrid>
+
+
+
+
+
+		</h:panelGrid>
+		<p:commandButton value="Buscar"
+			action="#{busquedaPerfilAction.buscar}" ajax="false"></p:commandButton>
+
+
+	</h:form>
+</p:panel>
+<!-- <p:orderList value="#{busquedaPerfilDM.rolSelectItemList}" var="rol"
+				iconOnly="true" effect="clip" itemValue="#{rol.label}"
+				controlsLocation="none" id="customList">
+				<f:facet name="caption">Roles</f:facet>
+
+
+				<p:column style="width:75%;">
+					<h:outputText value="#{rol.value}" />
+				</p:column>
+			</p:orderList> -->
+
+</html>

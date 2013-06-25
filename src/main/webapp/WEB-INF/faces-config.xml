@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This file is not required if you don't need any extra configuration. -->
+<faces-config version="2.0" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+        http://java.sun.com/xml/ns/javaee
+        http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd">
+
+	<!-- This descriptor activates the JSF 2.0 Servlet -->
+
+	<!-- Write your navigation rules here. You are encouraged to use CDI for 
+		creating @Named managed beans. -->
+	<application>
+		<resource-bundle>
+			<base-name>messages</base-name>
+			<var>messages</var>
+		</resource-bundle>
+		<resource-bundle>
+			<base-name>parameters</base-name>
+			<var>parameters</var>
+		</resource-bundle>
+		<resource-bundle>
+			<base-name>labels</base-name>
+			<var>labels</var>
+		</resource-bundle>
+	</application>
+	
+	<navigation-rule>
+		<from-view-id>/pages/*</from-view-id>
+		<navigation-case>
+			<from-outcome>informacion-institucional</from-outcome>
+			<to-view-id>/pages/configuracion/informacion-institucional.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>perfil</from-outcome>
+			<to-view-id>/pages/perfiles/perfil.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>perfiles</from-outcome>
+			<to-view-id>/pages/perfiles/perfiles.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>pensum</from-outcome>
+			<to-view-id>/pages/academico/pensum.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>registro-academico-materia</from-outcome>
+			<to-view-id>/pages/demo/registro-profesor.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>registro-faltas</from-outcome>
+			<to-view-id>/pages/demo/registro-faltas.xhtml</to-view-id>
+		</navigation-case>
+		
+		<navigation-case>
+			<from-outcome>bitacora</from-outcome>
+			<to-view-id>/pages/demo/bitacora.xhtml</to-view-id>
+		</navigation-case>
+		
+		<navigation-case>
+			<from-outcome>materias-institucionales</from-outcome>
+			<to-view-id>/pages/demo/materias-institucionales.xhtml</to-view-id>
+		</navigation-case>
+		
+		<navigation-case>
+			<from-outcome>certificado-asistencia</from-outcome>
+			<to-view-id>/pages/demo/certificado-asistencia.xhtml</to-view-id>
+		</navigation-case>
+		
+		<navigation-case>
+			<from-outcome>registro-academico-tutor</from-outcome>
+			<to-view-id>/pages/demo/registro-tutor.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>pases-anio</from-outcome>
+			<to-view-id>/pages/demo/pases-anio.xhtml</to-view-id>
+		</navigation-case>
+		
+		<navigation-case>
+			<from-outcome>registro-academico-secretaria-materia</from-outcome>
+			<to-view-id>/pages/demo/registro-alumno.xhtml</to-view-id>
+		</navigation-case>
+		
+		<navigation-case>
+			<from-outcome>apertura-sistema</from-outcome>
+			<to-view-id>/pages/demo/apertura-sistema.xhtml</to-view-id>
+		</navigation-case>
+		
+		<navigation-case>
+			<from-outcome>hojas-etiquetadas</from-outcome>
+			<to-view-id>/pages/demo/hojas-etiquetadas.xhtml</to-view-id>
+		</navigation-case>
+		
+		<navigation-case>
+			<from-outcome>disciplina</from-outcome>
+			<to-view-id>/pages/demo/disciplina.xhtml</to-view-id>
+		</navigation-case> 
+		
+		<navigation-case>
+			<from-outcome>dashboard</from-outcome>
+			<to-view-id>/pages/default.xhtml</to-view-id>
+		</navigation-case>
+		
+	</navigation-rule>
+	
+
+</faces-config>

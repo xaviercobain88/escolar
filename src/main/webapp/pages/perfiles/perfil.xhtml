@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/templates/default.xhtml">
+	<ui:define name="content">
+
+		<h:form id="form">
+		#{perfilAction.init}
+				<p:tabView id="tabView" rendered="#{perfilDM.permitirPantalla}"
+				dynamic="true">
+				<p:tab title="Información Básica">
+
+					<h:panelGrid columns="3">
+
+						<p:outputLabel styleClass="bold" value="Nombres" for="nombresTxt" />
+						<p:inputText id="nombresTxt" size="30"
+							rendered="#{perfilDM.administradorInstitucionAllow}"
+							value="#{perfilDM.persona.nombres}">
+						</p:inputText>
+						<h:outputText value="#{perfilDM.persona.nombres}"
+							rendered="#{perfilDM.todosAllow}" />
+						<p:message for="nombresTxt"></p:message>
+
+						<p:outputLabel styleClass="bold" value="Apellidos"
+							for="apellidosTxt" />
+						<p:inputText id="apellidosTxt" size="30"
+							rendered="#{perfilDM.administradorInstitucionAllow}"
+							value="#{perfilDM.persona.apellidos}">
+						</p:inputText>
+						<h:outputText value="#{perfilDM.persona.apellidos}"
+							rendered="#{perfilDM.todosAllow}" />
+						<p:message for="apellidosTxt"></p:message>
+
+						<p:outputLabel styleClass="bold" value="Fecha de nacimiento"
+							for="fechaNacimientoCal" />
+						<p:calendar value="#{perfilDM.persona.fechaNacimiento}"
+							id="fechaNacimientoCal"
+							rendered="#{perfilDM.administradorInstitucionAllow}" />
+						<h:outputText value="#{perfilDM.persona.fechaNacimiento}"
+							rendered="#{perfilDM.todosAllow}" />
+						<p:message for="fechaNacimientoCal"></p:message>
+
+						<p:outputLabel styleClass="bold" value="Cédula de ciudadanía"
+							for="ciTxt" />
+						<p:inputText id="ciTxt" size="30"
+							rendered="#{perfilDM.administradorInstitucionAllow}"
+							value="#{perfilDM.persona.ciPasaporte}">
+							
+						</p:inputText>
+						<h:outputText value="#{perfilDM.persona.ciPasaporte}"
+							rendered="#{perfilDM.todosAllow}" />
+						<p:message for="ciTxt"></p:message>
+
+
+						<p:outputLabel styleClass="bold"
+							value="Teléfono de contacto (convencional)"
+							for="telefonoConvencionalTxt" />
+						<p:inputText id="telefonoConvencionalTxt" size="30"
+							value="#{perfilDM.persona.telefonoContacto1}">
+						</p:inputText>
+						<p:message for="telefonoConvencionalTxt"></p:message>
+
+						<p:outputLabel styleClass="bold"
+							value="Teléfono de contacto (celular)" for="telefonoCelularTxt" />
+						<p:inputText id="telefonoCelularTxt" size="30"
+							value="#{perfilDM.persona.telefonoContacto2}">
+						</p:inputText>
+						<p:message for="telefonoCelularTxt"></p:message>
+
+						<p:outputLabel styleClass="bold" value="e-mail" for="emailTxt" />
+						<p:inputText id="emailTxt" size="30"
+							value="#{perfilDM.persona.emailPersonal}">
+						</p:inputText>
+						<p:message for="emailTxt"></p:message>
+
+
+
+
+					</h:panelGrid>
+					<p:commandButton value="Guardar" action="#{perfilAction.guardar}"
+						rendered="#{perfilDM.todosAllow or perfilDM.administradorInstitucionAllow}" ajax="false"></p:commandButton>
+					<p:commandButton value="Cancelar" action="#{perfilAction.cancelar}"></p:commandButton>
+				</p:tab>
+				<p:tab title="Seguridad" rendered="#{!(perfilDM.persona.idPersona eq null)}">
+
+					<h:panelGrid columns="3">
+
+						<p:outputLabel styleClass="bold" value="Usuario" for="usuarioTxt" />
+						<p:inputText id="usuarioTxt" size="30"
+							value="#{perfilDM.persona.usuario}">
+							<p:ajax event="change" listener="#{perfilAction.validarUsuario}"
+								process="usuarioTxt" />
+						</p:inputText>
+						<p:message for="usuarioTxt" id="usuarioMensaje"></p:message>
+
+
+						<p:outputLabel styleClass="bold" for="pwd1"
+							value="Contraseña actual" />
+						<p:password id="pwd1" value="#{perfilDM.contrasenaAntigua}" size="30" />
+						<p:message for="pwd1"></p:message>
+
+						<p:outputLabel styleClass="bold" for="pwd2"
+							value="Contraseña nueva" />
+						<p:password id="pwd2" value="#{perfilDM.contrasenaNueva}" size="30"
+							match="pwd3" validatorMessage="La contraseña no coincide" />
+						<p:message for="pwd2"></p:message>
+						<p:outputLabel styleClass="bold" for="pwd3"
+							value="Verificación de contraseña" />
+						<p:password id="pwd3" value="#{perfilDM.contrasenaRetype}" size="30">
+							<p:ajax process="@this pwd2" event="blur"></p:ajax>
+						</p:password>
+						<p:message for="pwd3"></p:message>
+
+
+					</h:panelGrid>
+					<p:commandButton value="Guardar" action="#{perfilAction.guardarSeguridad}"
+						rendered="#{perfilDM.todosAllow or perfilDM.administradorInstitucionAllow}" ajax="false"></p:commandButton>
+					<p:commandButton value="Cancelar" action="#{perfilAction.cancelar}"></p:commandButton>
+				</p:tab>
+
+			</p:tabView>
+
+
+
+			<h:outputText styleClass="bold"
+				rendered="#{!perfilDM.permitirPantalla}"
+				value="No esta permitido para visualizar esta pagina" />
+
+
+
+		</h:form>
+
+
+	</ui:define>
+</ui:composition>

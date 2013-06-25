@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/templates/default.xhtml">
+	<ui:define name="content">
+	#{mockController.cambiarFase}
+		
+		<p:tabView dynamic="true" id="tabView">
+			<p:tab title="Participación Estudiantil (Bitácora)">
+				<h:form id="formulario1">
+
+					<h:panelGrid columns="1" styleClass="alineado"
+						style="text-align: center;">
+						<h:outputText value="Periodismo Comunitario" styleClass="titulo" />
+						<p:dataTable var="persona" value="#{mockController.horasString}"
+							id="bimestreTable" rowIndexVar="no" paginator="true" rows="10"
+							rowsPerPageTemplate="20"
+							style="padding-top: 8px;display: block;">
+							<p:focus context="bimestreTable" />
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="No." />
+								</f:facet>
+								<h:outputText value="#{no+ 1}" style="width:50px;" />
+							</p:column>
+
+							<p:column style="width:50px;">
+								<f:facet name="header">
+									<h:outputText value="Fecha" />
+								</f:facet>
+								<p:calendar style="width:50px;" pattern="dd/MMM/yyyy"></p:calendar>
+							</p:column>
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Hora" />
+								</f:facet>
+								<p:calendar  pattern="HH:mm" timeOnly="true" />
+							</p:column>
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Descripción" />
+								</f:facet>
+								<p:inputText size="60"></p:inputText>
+							</p:column>
+
+
+
+
+
+						</p:dataTable>
+					</h:panelGrid>
+					<h:panelGrid columns="2">
+						<p:commandButton value="Guardar" ajax="false"></p:commandButton>
+						<p:commandButton value="Exportar PDF" ajax="false"></p:commandButton>
+					</h:panelGrid>
+				</h:form>
+			</p:tab>
+
+
+
+		</p:tabView>
+	</ui:define>
+</ui:composition>

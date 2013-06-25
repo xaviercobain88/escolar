@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/templates/default.xhtml">
+	<ui:define name="content">
+	#{pensumAction.init}
+		<ui:include src="/pages/busqueda/busqueda-curso.xhtml" />
+		<p:tabView id="tabView" rendered="#{pensumDM.permitirPantalla}"
+			dynamic="true">
+			<p:tab title="Pensum por curso">
+				<h:form id="formMateriasCurso">
+					<h:panelGrid columns="3" styleClass="alineado" rendered="#{!(busquedaCursoDM.idCurso eq null)}">
+						<p:dataTable id="materiasCursoTable" var="materia"
+							value="#{pensumDM.materiaCursoDataModel}" paginator="true"
+							rows="#{pensumAction.numeroFilas}"
+							selection="#{pensumDM.materiasCursoSeleccionadas}"
+							rowStyleClass="#{materia.cambiada ? 'cambiadaEnCurso' : (materia.tipoMateriaEnum.nombre eq 'sugerida' ? 'sugeridaEnCurso' : (materia.tipoMateriaEnum.nombre eq 'especial' ? 'especialEnCurso' : ''))}">
+							<f:facet name="header">
+								<h:outputText value="Materias del curso"></h:outputText>
+							</f:facet>
+							<p:column selectionMode="multiple" style="width:18px" />
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Nombre" />
+								</f:facet>
+								<h:outputText value="#{materia.nombre}" />
+							</p:column>
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Descripción" />
+								</f:facet>
+								<h:outputText value="#{materia.descripcion}" />
+							</p:column>
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Contenidos" />
+								</f:facet>
+								<h:outputText value="#{materia.contenidos}" />
+							</p:column>
+						</p:dataTable>
+						<h:panelGrid columns="1">
+							<p:commandButton id="leftButton" update="personasDataTable"
+								ajax="false" icon="ui-icon-carat-1-e" title="Pasar a la derecha"
+								action="#{pensumAction.cambiarLeft()}">
+								<f:setPropertyActionListener value="#{true}"
+									target="#{pensumDM.leftRgth}" />
+							</p:commandButton>
+							<p:commandButton id="rightButton" update="personasDataTable"
+								ajax="false" icon="ui-icon-carat-1-w"
+								title="Pasar a la izquierda"
+								action="#{pensumAction.cambiarRight()}">
+								<f:setPropertyActionListener value="#{true}"
+									target="#{pensumDM.leftRgth}" />
+							</p:commandButton>
+						</h:panelGrid>
+						<p:dataTable id="materiasUeTable" var="materia"
+							value="#{pensumDM.materiaUeDataModel}" paginator="true"
+							rows="#{pensumAction.numeroFilas}"
+							selection="#{pensumDM.materiasUeSeleccionadas}"
+							rowStyleClass="#{materia.cambiada ? 'cambiadaEnUe' : (materia.tipoMateriaEnum.nombre eq 'sugerida' ? 'sugeridaEnUe' : (materia.tipoMateriaEnum.nombre eq 'especial' ? 'especialEnUe' : ''))}">
+							<f:facet name="header">
+								<h:outputText value="Materias disponibles"></h:outputText>
+							</f:facet>
+							<p:column selectionMode="multiple" style="width:18px" />
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Nombre" />
+								</f:facet>
+								<h:outputText value="#{materia.nombre}" />
+							</p:column>
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Descripción" />
+								</f:facet>
+								<h:outputText value="#{materia.descripcion}" />
+							</p:column>
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Contenidos" />
+								</f:facet>
+								<h:outputText value="#{materia.contenidos}" />
+							</p:column>
+						</p:dataTable>
+					</h:panelGrid>
+					<p:commandButton value="Guardar" action="#{pensumAction.guardar}" rendered="#{!(busquedaCursoDM.idCurso eq null)}"
+						ajax="false"></p:commandButton>
+					<p:commandButton value="Cancelar" action="#{pensumAction.cancelar}" rendered="#{!(busquedaCursoDM.idCurso eq null)}"></p:commandButton>
+
+				</h:form>
+			</p:tab>
+		</p:tabView>
+		<h:outputText styleClass="bold"
+			rendered="#{!pensumDM.permitirPantalla}"
+			value="No esta permitido para visualizar esta pagina" />
+	</ui:define>
+</ui:composition>

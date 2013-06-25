@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/templates/default.xhtml">
+	<ui:define name="content">
+		<h:form id="form">
+		#{informacionInstitucionalAction.init}
+
+
+
+
+
+				<p:tabView id="tabView"
+				rendered="#{informacionInstitucionalDM.permitirPantalla}">
+
+
+				<p:tab title="Información General">
+					<p:fieldset legend="Información básica">
+
+						<h:panelGrid columns="3">
+							<p:outputLabel styleClass="bold" value="Nombre de la Institución"
+								for="nombreTxt"></p:outputLabel>
+							<p:inputText id="nombreTxt"
+								rendered="#{informacionInstitucionalDM.administradorInstitucionAllow}"
+								value="#{informacionInstitucionalDM.unidadEducativa.nombre}"
+								size="30">
+							</p:inputText>
+							<h:outputText
+								value="#{informacionInstitucionalDM.unidadEducativa.nombre}"
+								rendered="#{informacionInstitucionalDM.todosAllow}" />
+							<p:message for="nombreTxt"></p:message>
+							<p:outputLabel styleClass="bold" value="Tipo de Institución"
+								for="tipoInstitucionTxt" />
+							<p:inputText id="tipoInstitucionTxt"
+								rendered="#{informacionInstitucionalDM.administradorInstitucionAllow}"
+								value="#{informacionInstitucionalDM.unidadEducativa.tipoInstitucion}"
+								size="30">
+							</p:inputText>
+							<h:outputText
+								value="#{informacionInstitucionalDM.unidadEducativa.tipoInstitucion}"
+								rendered="#{informacionInstitucionalDM.todosAllow}" />
+							<p:message for="tipoInstitucionTxt"></p:message>
+							<p:outputLabel styleClass="bold" value="Provincia"
+								for="provinciaCbx" />
+							<p:inputText
+								rendered="#{informacionInstitucionalDM.administradorInstitucionAllow}"
+								value="#{informacionInstitucionalDM.unidadEducativa.provincia}"
+								id="provinciaCbx" size="30">
+							</p:inputText>
+							<h:outputText
+								value="#{informacionInstitucionalDM.unidadEducativa.provincia}"
+								rendered="#{informacionInstitucionalDM.todosAllow}" />
+							<p:message for="provinciaCbx"></p:message>
+							<p:outputLabel styleClass="bold" value="Cantón" for="cantonCbx" />
+							<p:inputText size="30"
+								rendered="#{informacionInstitucionalDM.administradorInstitucionAllow}"
+								value="#{informacionInstitucionalDM.unidadEducativa.canton}"
+								id="cantonCbx">
+							</p:inputText>
+							<h:outputText
+								value="#{informacionInstitucionalDM.unidadEducativa.canton}"
+								rendered="#{informacionInstitucionalDM.todosAllow}" />
+							<p:message for="cantonCbx"></p:message>
+							<p:outputLabel styleClass="bold" value="Parroquia"
+								for="parroquiaCbx" />
+							<p:inputText size="30"
+								rendered="#{informacionInstitucionalDM.administradorInstitucionAllow}"
+								value="#{informacionInstitucionalDM.unidadEducativa.parroquia}"
+								id="parroquiaCbx">
+							</p:inputText>
+							<h:outputText
+								value="#{informacionInstitucionalDM.unidadEducativa.parroquia}"
+								rendered="#{informacionInstitucionalDM.todosAllow}" />
+							<p:message for="parroquiaCbx"></p:message>
+							<p:outputLabel styleClass="bold" value="Dirección"
+								for="direccionTxt" />
+							<p:inputTextarea cols="30"
+								rendered="#{informacionInstitucionalDM.administradorInstitucionAllow}"
+								value="#{informacionInstitucionalDM.unidadEducativa.direccion}"
+								id="direccionTxt">
+							</p:inputTextarea>
+							<h:outputText
+								value="#{informacionInstitucionalDM.unidadEducativa.direccion}"
+								rendered="#{informacionInstitucionalDM.todosAllow and ! empty informacionInstitucionalDM.unidadEducativa.direccion}" />
+							<p:message for="direccionTxt"></p:message>
+
+						</h:panelGrid>
+					</p:fieldset>
+					<p:fieldset legend="Valores Intitucionales">
+						<h:panelGrid columns="3">
+							<p:outputLabel styleClass="bold" value="Slogan" for="sloganTxt" />
+							<p:inputTextarea cols="30"
+								rendered="#{informacionInstitucionalDM.administradorInstitucionAllow}"
+								value="#{informacionInstitucionalDM.unidadEducativa.slogan}"
+								id="sloganTxt">
+							</p:inputTextarea>
+							<h:outputText
+								value="#{informacionInstitucionalDM.unidadEducativa.slogan}"
+								rendered="#{informacionInstitucionalDM.todosAllow}" />
+							<p:message for="sloganTxt"></p:message>
+							<p:outputLabel styleClass="bold" value="Misión" for="misionTxt" />
+							<p:inputTextarea cols="30"
+								rendered="#{informacionInstitucionalDM.administradorInstitucionAllow}"
+								value="#{informacionInstitucionalDM.unidadEducativa.mision}"
+								id="misionTxt">
+							</p:inputTextarea>
+							<h:outputText
+								value="#{informacionInstitucionalDM.unidadEducativa.mision}"
+								rendered="#{informacionInstitucionalDM.todosAllow}" />
+							<p:message for="misionTxt"></p:message>
+							<p:outputLabel styleClass="bold" value="Visión" for="visionTxt" />
+							<p:inputTextarea cols="30"
+								rendered="#{informacionInstitucionalDM.administradorInstitucionAllow}"
+								value="#{informacionInstitucionalDM.unidadEducativa.vision}"
+								id="visionTxt">
+							</p:inputTextarea>
+							<h:outputText
+								value="#{informacionInstitucionalDM.unidadEducativa.vision}"
+								rendered="#{informacionInstitucionalDM.todosAllow}" />
+							<p:message for="visionTxt"></p:message>
+
+						</h:panelGrid>
+						<p:commandButton value="Guardar"
+							action="#{informacionInstitucionalAction.guardar}"
+							rendered="#{informacionInstitucionalDM.administradorInstitucionAllow}"
+							ajax="false"></p:commandButton>
+						<p:commandButton value="Cancelar"
+							action="#{informacionInstitucionalAction.cancelar}"></p:commandButton>
+					</p:fieldset>
+				</p:tab>
+				<p:tab title="Contacto">
+					<h:panelGrid columns="3">
+						<p:outputLabel styleClass="bold" value="Rector" for="rectorTxt" />
+						<p:inputText size="30"
+							rendered="#{informacionInstitucionalDM.administradorInstitucionAllow}"
+							value="#{informacionInstitucionalDM.unidadEducativa.director}"
+							id="rectorTxt">
+						</p:inputText>
+						<h:outputText
+							value="#{informacionInstitucionalDM.unidadEducativa.director}"
+							rendered="#{informacionInstitucionalDM.todosAllow}" />
+						<p:message for="rectorTxt"></p:message>
+						<p:outputLabel styleClass="bold" value="Teléfono de Rector"
+							for="telefonoRectorTxt" />
+						<p:inputText size="30"
+							value="#{informacionInstitucionalDM.unidadEducativa.telefono2}"
+							rendered="#{informacionInstitucionalDM.administradorInstitucionAllow}"
+							id="telefonoRectorTxt">
+						</p:inputText>
+						<h:outputText
+							value="#{informacionInstitucionalDM.unidadEducativa.telefono2}"
+							rendered="#{informacionInstitucionalDM.todosAllow}" />
+						<p:message for="telefonoRectorTxt"></p:message>
+						<p:outputLabel styleClass="bold" value="Teléfono Intitución"
+							for="telefonoTxt" />
+						<p:inputText id="telefonoTxt" size="30"
+							rendered="#{informacionInstitucionalDM.administradorInstitucionAllow}"
+							value="#{informacionInstitucionalDM.unidadEducativa.telefono1}">
+						</p:inputText>
+						<h:outputText
+							value="#{informacionInstitucionalDM.unidadEducativa.telefono1}"
+							rendered="#{informacionInstitucionalDM.todosAllow}" />
+						<p:message for="telefonoTxt"></p:message>
+						<p:outputLabel styleClass="bold" value="E-mail Intitución" for="emailTxt" />
+						<p:inputText id="emailTxt" size="30"
+							rendered="#{informacionInstitucionalDM.administradorInstitucionAllow}"
+							value="#{informacionInstitucionalDM.unidadEducativa.email}">
+						</p:inputText>
+						<h:outputText
+							value="#{informacionInstitucionalDM.unidadEducativa.email}"
+							rendered="#{informacionInstitucionalDM.todosAllow}" />
+						<p:message for="emailTxt"></p:message>
+						<p:outputLabel styleClass="bold" value="Página Web"
+							for="websiteTxt" />
+						<p:inputText id="websiteTxt" size="30"
+							rendered="#{informacionInstitucionalDM.administradorInstitucionAllow}"
+							value="#{informacionInstitucionalDM.unidadEducativa.website}">
+						</p:inputText>
+						<h:outputText
+							value="#{informacionInstitucionalDM.unidadEducativa.website}"
+							rendered="#{informacionInstitucionalDM.todosAllow}" />
+						<p:message for="websiteTxt"></p:message>
+						<p:outputLabel styleClass="bold" value="Nombre de Contacto"
+							for="nombreContactoTxt" />
+						<p:inputText id="nombreContactoTxt" size="30"
+							rendered="#{informacionInstitucionalDM.administradorInstitucionAllow}"
+							value="#{informacionInstitucionalDM.unidadEducativa.nombreContactoAdm}">
+						</p:inputText>
+						<h:outputText
+							value="#{informacionInstitucionalDM.unidadEducativa.nombreContactoAdm}"
+							rendered="#{informacionInstitucionalDM.todosAllow}" />
+						<p:message for="nombreContactoTxt"></p:message>
+						<p:outputLabel styleClass="bold" value="Teléfono de Contacto"
+							for="telefonoContactoTxt" />
+						<p:inputText id="telefonoContactoTxt" size="30"
+							rendered="#{informacionInstitucionalDM.administradorInstitucionAllow}"
+							value="#{informacionInstitucionalDM.unidadEducativa.telefonoContactoAdm}">
+						</p:inputText>
+						<h:outputText
+							value="#{informacionInstitucionalDM.unidadEducativa.telefonoContactoAdm}"
+							rendered="#{informacionInstitucionalDM.todosAllow}" />
+						<p:message for="telefonoContactoTxt"></p:message>
+
+					</h:panelGrid>
+					<p:commandButton value="Guardar"
+						action="#{informacionInstitucionalAction.guardar}"
+						rendered="#{informacionInstitucionalDM.administradorInstitucionAllow}"
+						ajax="false"></p:commandButton>
+					<p:commandButton value="Cancelar"
+						action="#{informacionInstitucionalAction.cancelar}"></p:commandButton>
+				</p:tab>
+
+			</p:tabView>
+
+
+
+
+
+			<p:outputPanel id="noPermitido">
+				<h:outputText styleClass="bold"
+					value="No esta permitido para visualizar esta pagina"
+					rendered="#{!informacionInstitucionalDM.permitirPantalla}" />
+			</p:outputPanel>
+		</h:form>
+
+	</ui:define>
+</ui:composition>

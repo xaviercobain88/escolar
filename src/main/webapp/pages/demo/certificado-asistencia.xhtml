@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/templates/default.xhtml">
+	<ui:define name="content">
+	#{mockController.cambiarFase}
+		<p:panel header="Búsqueda" toggleable="true"
+			toggleOrientation="horizontal">
+			<h:form id="formBusqueda">
+				<h:panelGrid columns="4">
+
+					<h:panelGrid columns="1" styleClass="panelesComboBox">
+						<h:outputText value="Curso"
+							styleClass="ui-orderlist-caption ui-widget-header ui-corner-top" />
+						<p:selectOneListbox styleClass="subPanelesComboBox">
+							<f:selectItems value="#{mockController.cursoString}"></f:selectItems>
+						</p:selectOneListbox>
+					</h:panelGrid>
+
+					<h:panelGrid columns="1" styleClass="panelesComboBox">
+						<h:outputText value="Alumno"
+							styleClass="ui-orderlist-caption ui-widget-header ui-corner-top" />
+						<p:selectOneListbox styleClass="subPanelesComboBox">
+							<f:selectItems value="#{mockController.alumnoString}"></f:selectItems>
+						</p:selectOneListbox>
+					</h:panelGrid>
+
+
+				</h:panelGrid>
+
+
+			</h:form>
+		</p:panel>
+		<p:tabView dynamic="true" id="tabView">
+			<p:tab title="Certicado de Asistencia">
+				<h:form id="formulario1">
+
+					<h:panelGrid columns="1" styleClass="alineado">
+						<h:outputText
+							value="Al pulsar en el botón se generará un archivo en formato PDF con la certificación de asistencia" />
+						<p:commandButton value="Generar" ajax="false"></p:commandButton>
+					</h:panelGrid>
+
+				</h:form>
+			</p:tab>
+
+
+
+		</p:tabView>
+	</ui:define>
+</ui:composition>

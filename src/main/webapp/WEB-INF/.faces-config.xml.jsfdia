@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="JSFProcess">
+ <PROCESS-ITEM NAME="rules:#pages#*" PATH="/pages/*" SHAPE="32,17,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#pages#*:0" NAME="item" PATH="/pages/*" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT
+    ID="informacion-institucional::#pages#configuracion#informacion-institucional.xhtml"
+    NAME="output"
+    PATH="/pages/configuracion/informacion-institucional.xhtml"
+    TARGET="rules:#pages#configuracion#informacion-institucional.xhtml"
+    TITLE="informacion-institucional" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="perfil::#pages#perfiles#perfil.xhtml"
+    NAME="output1" PATH="/pages/perfiles/perfil.xhtml"
+    TARGET="rules:#pages#perfiles#perfil.xhtml" TITLE="perfil" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="perfiles::#pages#perfiles#perfiles.xhtml"
+    NAME="output2" PATH="/pages/perfiles/perfiles.xhtml"
+    TARGET="rules:#pages#perfiles#perfiles.xhtml" TITLE="perfiles" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="pensum::#pages#academico#pensum.xhtml"
+    NAME="output3" PATH="/pages/academico/pensum.xhtml"
+    TARGET="rules:#pages#academico#pensum.xhtml" TITLE="pensum" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="registro-academico-materia::#pages#demo#registro-profesor.xhtml"
+    NAME="output4" PATH="/pages/demo/registro-profesor.xhtml"
+    TARGET="rules:#pages#demo#registro-profesor.xhtml"
+    TITLE="registro-academico-materia" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="registro-faltas::#pages#demo#registro-faltas.xhtml"
+    NAME="output5" PATH="/pages/demo/registro-faltas.xhtml"
+    TARGET="rules:#pages#demo#registro-faltas.xhtml"
+    TITLE="registro-faltas" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="bitacora::#pages#demo#bitacora.xhtml"
+    NAME="output6" PATH="/pages/demo/bitacora.xhtml"
+    TARGET="rules:#pages#demo#bitacora.xhtml" TITLE="bitacora" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="materias-institucionales::#pages#demo#materias-institucionales.xhtml"
+    NAME="output7" PATH="/pages/demo/materias-institucionales.xhtml"
+    TARGET="rules:#pages#demo#materias-institucionales.xhtml"
+    TITLE="materias-institucionales" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="certificado-asistencia::#pages#demo#certificado-asistencia.xhtml"
+    NAME="output8" PATH="/pages/demo/certificado-asistencia.xhtml"
+    TARGET="rules:#pages#demo#certificado-asistencia.xhtml"
+    TITLE="certificado-asistencia" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="registro-academico-tutor::#pages#demo#registro-tutor.xhtml"
+    NAME="output9" PATH="/pages/demo/registro-tutor.xhtml"
+    TARGET="rules:#pages#demo#registro-tutor.xhtml"
+    TITLE="registro-academico-tutor" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="registro-academico-secretaria-materia::#pages#demo#registro-alumno.xhtml"
+    NAME="output10" PATH="/pages/demo/registro-alumno.xhtml"
+    TARGET="rules:#pages#demo#registro-alumno.xhtml"
+    TITLE="registro-academico-secretaria-materia" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="apertura-sistema::#pages#demo#apertura-sistema.xhtml"
+    NAME="output11" PATH="/pages/demo/apertura-sistema.xhtml"
+    TARGET="rules:#pages#demo#apertura-sistema.xhtml"
+    TITLE="apertura-sistema" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT
+    ID="hojas-etiquetadas::#pages#demo#hojas-etiquetadas.xhtml"
+    NAME="output12" PATH="/pages/demo/hojas-etiquetadas.xhtml"
+    TARGET="rules:#pages#demo#hojas-etiquetadas.xhtml"
+    TITLE="hojas-etiquetadas" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="disciplina::#pages#demo#disciplina.xhtml"
+    NAME="output13" PATH="/pages/demo/disciplina.xhtml"
+    TARGET="rules:#pages#demo#disciplina.xhtml" TITLE="disciplina" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="dashboard::#pages#default.xhtml"
+    NAME="output14" PATH="/pages/default.xhtml"
+    TARGET="rules:#pages#default.xhtml" TITLE="dashboard" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#pages#default.xhtml"
+  PATH="/pages/default.xhtml" SHAPE="256,177,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM
+  NAME="rules:#pages#configuracion#informacion-institucional.xhtml"
+  PATH="/pages/configuracion/informacion-institucional.xhtml"
+  SHAPE="256,33,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#perfiles#perfil.xhtml"
+  PATH="/pages/perfiles/perfil.xhtml" SHAPE="272,321,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#academico#pensum.xhtml"
+  PATH="/pages/academico/pensum.xhtml" SHAPE="288,577,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#perfiles#perfiles.xhtml"
+  PATH="/pages/perfiles/perfiles.xhtml" SHAPE="288,465,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#demo#registro-profesor.xhtml"
+  PATH="/pages/demo/registro-profesor.xhtml" SHAPE="304,529,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#demo#bitacora.xhtml"
+  PATH="/pages/demo/bitacora.xhtml" SHAPE="304,529,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#demo#materias-institucionales.xhtml"
+  PATH="/pages/demo/materias-institucionales.xhtml" SHAPE="304,593,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#demo#pases-anio.xhtml"
+  PATH="/pages/demo/pases-anio.xhtml" SHAPE="304,593,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#demo#apertura-sistema.xhtml"
+  PATH="/pages/demo/apertura-sistema.xhtml" SHAPE="304,993,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#demo#registro-alumno.xhtml"
+  PATH="/pages/demo/registro-alumno.xhtml" SHAPE="304,657,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#demo#hojas-etiquetadas.xhtml"
+  PATH="/pages/demo/hojas-etiquetadas.xhtml" SHAPE="304,721,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#demo#disciplina.xhtml"
+  PATH="/pages/demo/disciplina.xhtml" SHAPE="304,721,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#demo#registro-faltas.xhtml"
+  PATH="/pages/demo/registro-faltas.xhtml" SHAPE="304,753,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#demo#certificado-asistencia.xhtml"
+  PATH="/pages/demo/certificado-asistencia.xhtml" SHAPE="304,753,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#pages#demo#registro-tutor.xhtml"
+  PATH="/pages/demo/registro-tutor.xhtml" SHAPE="304,817,0,0" model-entity="JSFProcessGroup"/>
+</PROCESS>

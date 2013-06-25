@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/templates/default.xhtml">
+	<ui:define name="content">
+	#{perfilesAction.init}
+		<ui:include src="/pages/busqueda/busqueda-perfil.xhtml" />
+		<h:form id="form">
+
+
+			<p:tabView id="tabView" rendered="#{perfilesDM.permitirPantalla}"
+				dynamic="true" onTabShow="dibujito();">
+				<p:tab title="Perfiles">
+					
+					<div id="chart"></div>
+					<p:dataTable id="personasDataTable" var="persona"
+						value="#{busquedaPerfilDM.personaList}">
+
+						<p:column sortBy="#{persona.apellidos}">
+							<f:facet name="header">
+								<h:outputText value="Apellidos" />
+							</f:facet>
+							<h:outputText value="#{persona.apellidos}" />
+						</p:column>
+						<p:column sortBy="#{persona.nombres}">
+							<f:facet name="header">
+								<h:outputText value="Nombres" />
+							</f:facet>
+							<h:outputText value="#{persona.nombres}" />
+						</p:column>
+						<p:column sortBy="#{persona.ciPasaporte}">
+							<f:facet name="header">
+								<h:outputText value="Cédula de ciudadanía" />
+							</f:facet>
+							<h:outputText value="#{persona.ciPasaporte}" />
+						</p:column>
+						<p:column sortBy="#{persona.usuario}">
+							<f:facet name="header">
+								<h:outputText value="Usuario" />
+							</f:facet>
+							<h:outputText value="#{persona.usuario}" />
+						</p:column>
+						<p:column>
+							<f:facet name="header">
+								<h:outputText value="Opciones" />
+							</f:facet>
+							<p:commandButton id="editButton" update="personasDataTable"
+								icon="ui-icon-pencil" title="Editar" action="perfil">
+								<f:setPropertyActionListener value="#{persona}"
+									target="#{perfilDM.persona}" />
+							</p:commandButton>
+						</p:column>
+
+
+					</p:dataTable>
+
+
+				</p:tab>
+
+			</p:tabView>
+
+
+
+			<h:outputText styleClass="bold"
+				rendered="#{!perfilesDM.permitirPantalla}"
+				value="No esta permitido para visualizar esta pagina" />
+
+
+
+		</h:form>
+		
+	</ui:define>
+</ui:composition>

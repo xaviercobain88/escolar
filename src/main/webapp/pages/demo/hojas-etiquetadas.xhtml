@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/templates/default.xhtml">
+	<ui:define name="content">
+		<ui:include src="/pages/busqueda/busqueda-curso.xhtml" />
+		<p:tabView dynamic="true">
+			<p:tab title="Hojas etiquetadas">
+				<h:form id="formulario1">
+					<h:panelGrid columns="3" styleClass="alineado">
+						<p:dataTable var="persona" value="#{mockController.personasList}"
+							id="tabla">
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="No." />
+								</f:facet>
+								<h:outputText value="#{persona.orden}" />
+							</p:column>
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Nombre" />
+								</f:facet>
+								<h:outputText value="#{persona.nombre}" />
+							</p:column>
+
+							<p:columns value="#{mockController.columnas}" var="columna"
+								columnIndexVar="columnaIndex">
+								<f:facet name="header">
+									<p:inputText value="#{columna}" size="3"></p:inputText>
+								</f:facet>
+
+							</p:columns>
+
+
+						</p:dataTable>
+						<p:spacer width="20" />
+						<p:panel header="Generador">
+							<h:panelGrid columns="1">
+								<h:outputText value="Número de columnas: " />
+								<p:inputText value="#{mockController.numeroColumnas}"></p:inputText>
+								<p:spacer height="5" />
+								<p:commandButton value="Generar"
+									action="#{mockController.generarColumnas()}" ajax="false"></p:commandButton>
+								<p:spacer height="5" />
+								<h:outputText value="Exportar a" />
+								<h:panelGrid columns="2">
+									<h:commandLink>
+										<p:graphicImage value="/resources/images/excel.png" />
+										<p:dataExporter type="xls" target="tabla"
+											fileName="estudiantes" />
+									</h:commandLink>
+
+									<h:commandLink>
+										<p:graphicImage value="/resources/images/pdf.png" />
+										<p:dataExporter type="pdf" target="tabla"
+											fileName="estudiantes" />
+
+									</h:commandLink>
+								</h:panelGrid>
+							</h:panelGrid>
+
+						</p:panel>
+					</h:panelGrid>
+
+				</h:form>
+			</p:tab>
+		</p:tabView>
+	</ui:define>
+</ui:composition>

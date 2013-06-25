@@ -1,0 +1,489 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/templates/default.xhtml">
+	<ui:define name="content">
+	#{mockController.prepararRegistroAlumno}
+		<p:tabView dynamic="true" id="tabView"
+			onTabChange="generarEstilosTabla();"
+			onTabShow="generarEstilosTabla();"
+			activeIndex="#{mockController.tabIndex}">
+			<p:tab title="Rendimiento Parcial">
+			#{mockController.fase1}
+				<h:form id="formulario1">
+
+
+
+					<script type="text/javascript">  
+ function chart1()
+		    {
+
+	 chart = new Highcharts.Chart({
+         chart: {
+             renderTo: 'chart1'
+         },title: {
+             text: ''
+         },  yAxis: {
+             title: {
+                 text: ''
+             }
+             
+         },
+         xAxis: {
+             categories: ['Lengua y Literatura', 'Matemáticas', 'Ciencias Naturales', 'Ciencias Sociales', 'Educación Estética', 'Educación Física', 'Lengua Extranjera', 'nformática']
+         },series: [{
+             type: 'column',
+             name: 'Calificación',
+             data: [4,5,6,8,4,5,6,8]
+         }, {
+             type: 'spline',
+             name: 'Media Aritmética',
+             data: [8.2,7.3,7,8,8.6,8.2,7.3,7],
+             marker: {
+             	lineWidth: 2,
+             	lineColor: Highcharts.getOptions().colors[3],
+             	fillColor: 'white'
+             }
+         
+         }, {
+             type: 'spline',
+             name: 'Base para Aprobación',
+             data: [7,7,7,7,7,7,7,7],
+             marker: {
+             	lineWidth: 2,
+             	lineColor: Highcharts.getOptions().colors[2],
+             	fillColor: 'white'
+             }}]})
+
+	    
+			 ;}</script>
+					<script type="text/javascript">  
+					 function chart2()
+					    {
+
+				 chart = new Highcharts.Chart({
+			         chart: {
+			             renderTo: 'chart2'
+			         },title: {
+			             text: ''
+			         },  yAxis: {
+			             title: {
+			                 text: ''
+			             }
+			             
+			         },
+			         xAxis: {
+			             categories: ['Lengua y Literatura', 'Matemáticas', 'Ciencias Naturales', 'Ciencias Sociales', 'Educación Estética', 'Educación Física', 'Lengua Extranjera', 'nformática']
+			         },series: [{
+			             type: 'column',
+			             name: 'Calificación',
+			             data: [4,5,6,8,4,5,6,8]
+			         }, {
+			             type: 'spline',
+			             name: 'Media Aritmética',
+			             data: [8.2,7.3,7,8,8.6,8.2,7.3,7],
+			             marker: {
+			             	lineWidth: 2,
+			             	lineColor: Highcharts.getOptions().colors[3],
+			             	fillColor: 'white'
+			             }
+			         } , {
+		                 type: 'spline',
+		                 name: 'Base para Aprobación',
+		                 data: [7,7,7,7,7,7,7,7],
+		                 marker: {
+		                 	lineWidth: 2,
+		                 	lineColor: Highcharts.getOptions().colors[2],
+		                 	fillColor: 'white'
+		                 }}]})
+
+				    
+						 ;}</script>
+					<script type="text/javascript">  
+					 function chart3()
+					    {
+
+				 chart = new Highcharts.Chart({
+			         chart: {
+			             renderTo: 'chart3'
+			         },title: {
+			             text: ''
+			         },  yAxis: {
+			             title: {
+			                 text: ''
+			             }
+			            
+			         },
+			         xAxis: {
+			             categories: ['Lengua y Literatura', 'Matemáticas', 'Ciencias Naturales', 'Ciencias Sociales', 'Educación Estética', 'Educación Física', 'Lengua Extranjera', 'nformática']
+			         },series: [{
+			             type: 'column',
+			             name: 'Calificación ',
+			             data: [4,5,6,8,4,5,6,8]
+			         }, {
+			             type: 'spline',
+			             name: 'Media Aritmética',
+			             data: [8.2,7.3,7,8,8.6,8.2,7.3,7],
+			             marker: {
+			             	lineWidth: 2,
+			             	lineColor: Highcharts.getOptions().colors[3],
+			             	fillColor: 'white'
+			             } 
+			         }, {
+		                 type: 'spline',
+		                 name: 'Base para Aprobación',
+		                 data: [7,7,7,7,7,7,7,7],
+		                 marker: {
+		                 	lineWidth: 2,
+		                 	lineColor: Highcharts.getOptions().colors[2],
+		                 	fillColor: 'white'
+		                 }}]})
+
+				    
+						 ;}</script>
+
+
+					<h:panelGrid columns="1" styleClass="alineado">
+						<h:panelGrid columns="3">
+							<p:selectOneMenu value="#{mockController.indexBimenestre}">
+								<p:ajax event="change" update=":tabView:formulario1"
+									oncomplete="generarEstilosTabla();"
+									listener="#{mockController.listenerBimestre()}" />
+								<f:selectItems value="#{mockController.bimestreSelectItemList}">
+
+								</f:selectItems>
+							</p:selectOneMenu>
+							<p:commandButton value="Gráficas Estadísticas"
+								onclick="graficasModal.show();" type="button" />
+							<p:commandButton value="Generar Reporte" type="button" />
+						</h:panelGrid>
+						<p:dialog id="graficasModal" header="Gráficas Estadísticas"
+							widgetVar="graficasModal">
+							<p:tabView dynamic="true">
+								<p:tab title="Rendimiento">
+									<div id="chart1" style="width: 600px;"></div>
+									<script type="text/javascript"> 
+									chart1(); 
+									</script>
+								</p:tab>
+							</p:tabView>
+						</p:dialog>
+						<p:dataTable var="persona" value="#{mockController.materiasList}"
+							id="bimestreTable">
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="No." />
+								</f:facet>
+								<h:outputText value="#{persona.orden}" />
+							</p:column>
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Nombre" />
+								</f:facet>
+								<h:outputText value="#{persona.nombre}" />
+								<f:facet name="footer">
+									<h:outputText value="Promedio" />
+								</f:facet>
+							</p:column>
+
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Tareas" />
+								</f:facet>
+								<h:outputText value="#{persona.n1}"
+									rendered="#{(!(mockController.fase eq 1) and !(mockController.fase eq 2)) or 
+								 ((mockController.fase eq 1) and !(mockController.indexBimenestre eq 0)) or ((mockController.fase eq 2) and !(mockController.indexBimenestre eq 1))}" />
+							</p:column>
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Act. Individuales" />
+								</f:facet>
+								<h:outputText value="#{persona.n2}"
+									rendered="#{(!(mockController.fase eq 1) and !(mockController.fase eq 2)) or 
+								 ((mockController.fase eq 1) and !(mockController.indexBimenestre eq 0)) or ((mockController.fase eq 2) and !(mockController.indexBimenestre eq 1))}" />
+							</p:column>
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Act. Grupales" />
+								</f:facet>
+								<h:outputText value="#{persona.n3}"
+									rendered="#{(!(mockController.fase eq 1) and !(mockController.fase eq 2)) or 
+								 ((mockController.fase eq 1) and !(mockController.indexBimenestre eq 0)) or ((mockController.fase eq 2) and !(mockController.indexBimenestre eq 1))}" />
+							</p:column>
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Lecciones" />
+								</f:facet>
+								<h:outputText value="#{persona.n4}"
+									rendered="#{(!(mockController.fase eq 1) and !(mockController.fase eq 2)) or 
+								 ((mockController.fase eq 1) and !(mockController.indexBimenestre eq 0)) or ((mockController.fase eq 2) and !(mockController.indexBimenestre eq 1))}" />
+							</p:column>
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Evaluación" />
+								</f:facet>
+								<h:outputText value="#{persona.n5}"
+									rendered="#{(!(mockController.fase eq 1) and !(mockController.fase eq 2)) or 
+								 ((mockController.fase eq 1) and !(mockController.indexBimenestre eq 0)) or ((mockController.fase eq 2) and !(mockController.indexBimenestre eq 1))}" />
+							</p:column>
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Promedio Parcial" />
+								</f:facet>
+								<h:outputText value="#{persona.b1}" id="resultado1"
+									styleClass="#{persona.estilo1}"
+									rendered="#{!(mockController.indexBimenestre  eq 1)}" />
+								<h:outputText value="#{persona.b2}" id="resultado2"
+									styleClass="#{persona.estilo1}"
+									rendered="#{(mockController.indexBimenestre  eq 1)}" />
+								<f:facet name="footer">
+									<h:outputText value="#{mockController.mediaParcial1}"
+										rendered="#{!(mockController.indexBimenestre  eq 1)}" />
+									<h:outputText value="#{mockController.mediaParcial2}"
+										rendered="#{(mockController.indexBimenestre  eq 1)}" />
+								</f:facet>
+							</p:column>
+
+
+
+						</p:dataTable>
+					</h:panelGrid>
+
+				</h:form>
+			</p:tab>
+
+			<p:tab title="Rendimiento Quimestral">
+			#{mockController.fase3}
+				<h:form id="formulario2">
+					<h:panelGrid columns="1" styleClass="alineado">
+						<h:panelGrid columns="3">
+							<p:commandButton value="Gráficas Estadísticas"
+								onclick="graficasModal2.show();" type="button" />
+							<p:commandButton value="Generar Reporte" type="button" />
+						</h:panelGrid>
+						<p:dialog id="graficasModal2" header="Gráficas Estadísticas"
+							widgetVar="graficasModal2">
+							<p:tabView dynamic="true">
+								<p:tab title="Rendimiento">
+									<div id="chart2" style="width: 600px;"></div>
+									<script type="text/javascript"> 
+									chart2(); 
+									</script>
+								</p:tab>
+							</p:tabView>
+						</p:dialog>
+						<p:dataTable var="persona" value="#{mockController.materiasList}"
+							id="quimestreTable">
+
+							<p:columnGroup type="header">
+								<p:row>
+									<p:column rowspan="2" headerText="No." />
+									<p:column rowspan="2" headerText="Nombre" />
+									<p:column colspan="6" headerText="Quimestre 1" />
+									<p:column colspan="6" headerText="Quimestre 2" />
+									<p:column rowspan="2" headerText="Promedio" />
+								</p:row>
+
+
+								<p:row>
+									<p:column headerText="Par 1" />
+									<p:column headerText="Par 2" />
+									<p:column headerText="Par 3" />
+									<p:column headerText="Par 4" />
+									<p:column headerText="Examen" />
+									<p:column headerText="Promedio" />
+									<p:column headerText="Par 1" />
+									<p:column headerText="Par 2" />
+									<p:column headerText="Par 3" />
+									<p:column headerText="Par 4" />
+									<p:column headerText="Examen" />
+									<p:column headerText="Promedio" />
+								</p:row>
+							</p:columnGroup>
+
+
+							<p:column>
+								<h:outputText value="#{persona.orden}" />
+							</p:column>
+
+							<p:column>
+								<h:outputText value="#{persona.nombre}" />
+								<f:facet name="footer">
+									<h:outputText value="Promedio" />
+								</f:facet>
+							</p:column>
+
+
+							<p:column>
+								<h:outputText value="#{persona.b1}" />
+							</p:column>
+							<p:column>
+								<h:outputText value="#{persona.b2}" />
+							</p:column>
+							<p:column>
+								<h:outputText value="#{persona.b1}" />
+							</p:column>
+							<p:column>
+								<h:outputText value="#{persona.b2}" />
+							</p:column>
+							<p:column>
+								<h:outputText value="#{persona.x1}" />
+							</p:column>
+							<p:column>
+								<h:outputText value="#{persona.q1}" id="resultado3" />
+								<f:facet name="footer">
+									<h:outputText value="#{mockController.mediaQ1}" />
+								</f:facet>
+							</p:column>
+
+
+							<p:column>
+								<h:outputText value="#{persona.b1}" />
+							</p:column>
+							<p:column>
+								<h:outputText value="#{persona.b2}" />
+							</p:column>
+							<p:column>
+								<h:outputText value="#{persona.b1}" />
+							</p:column>
+							<p:column>
+								<h:outputText value="#{persona.b2}" />
+							</p:column>
+							<p:column>
+
+								<h:outputText value="#{persona.x2}" />
+							</p:column>
+							<p:column>
+								<h:outputText value="#{persona.q2}" />
+								<f:facet name="footer">
+									<h:outputText value="#{mockController.mediaQ2}" />
+								</f:facet>
+							</p:column>
+							<p:column>
+								<h:outputText value="#{persona.a}"
+									styleClass="#{persona.estilo2}" />
+								<f:facet name="footer">
+									<h:outputText value="#{mockController.mediaA}" />
+								</f:facet>
+							</p:column>
+
+
+						</p:dataTable>
+					</h:panelGrid>
+
+				</h:form>
+			</p:tab>
+			<p:tab title="Rendimiento Anual">
+			#{mockController.fase7}
+				<h:form id="formulario3">
+					<h:panelGrid columns="1" styleClass="alineado">
+						<h:panelGrid columns="2">
+							<p:commandButton value="Gráficas Estadísticas"
+								onclick="graficasModal3.show();" type="button" />
+							<p:commandButton value="Generar Reporte" type="button" />
+						</h:panelGrid>
+						<p:dialog id="graficasModal3" header="Gráficas Estadísticas"
+							widgetVar="graficasModal3">
+							<p:tabView dynamic="true">
+								<p:tab title="Rendimiento">
+									<div id="chart3" style="width: 600px;"></div>
+									<script type="text/javascript"> 
+									chart3(); 
+									</script>
+								</p:tab>
+							</p:tabView>
+						</p:dialog>
+						<p:dataTable var="persona" value="#{mockController.materiasList}"
+							id="anualTable">
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="No." />
+								</f:facet>
+								<h:outputText value="#{persona.orden}" />
+							</p:column>
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Nombre" />
+								</f:facet>
+								<h:outputText value="#{persona.nombre}" />
+								<f:facet name="footer">
+									<h:outputText value="Promedio" />
+								</f:facet>
+							</p:column>
+
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Quimestre 1" />
+								</f:facet>
+								<h:outputText value="#{persona.q1}" />
+							</p:column>
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Quimestre 2" />
+								</f:facet>
+								<h:outputText value="#{persona.q2}" />
+							</p:column>
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Promedio" />
+								</f:facet>
+								<h:outputText value="#{(persona.a)}" />
+							</p:column>
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Recuperacion" />
+								</f:facet>
+								<h:outputText value="#{persona.r1}"
+									rendered="#{!(mockController.fase eq 5)}" />
+
+							</p:column>
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Supletorio" />
+								</f:facet>
+								<h:outputText value="#{persona.s1}"
+									rendered="#{!(mockController.fase eq 5)}" />
+							</p:column>
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Remedial" />
+								</f:facet>
+								<h:outputText value="#{persona.remedial1}"
+									rendered="#{!(mockController.fase eq 6)}" />
+							</p:column>
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Gracia" />
+								</f:facet>
+								<h:outputText value="#{persona.g1}"
+									rendered="#{!(mockController.fase eq 7)}" />
+							</p:column>
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Final" />
+								</f:facet>
+								<h:outputText value="#{persona.f}" id="resultado5"
+									styleClass="#{persona.estilo3}" />
+								<f:facet name="footer">
+									<h:outputText value="#{mockController.mediaF}" />
+								</f:facet>
+							</p:column>
+
+
+
+						</p:dataTable>
+					</h:panelGrid>
+
+				</h:form>
+			</p:tab>
+
+		</p:tabView>
+	</ui:define>
+</ui:composition>

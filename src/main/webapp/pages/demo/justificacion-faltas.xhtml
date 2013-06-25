@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/templates/default.xhtml">
+	<ui:define name="content">
+		<p:tabView dynamic="true" id="tabView">
+			<p:tab title="Registro de Faltas">
+				<h:form id="formulario1">
+
+					<p:dataTable var="persona" value="#{mockController.personasList}"
+						id="anualTable"
+						rowStyleClass="#{(persona.dt gt 39) ? 'rojo':'blanco'}">
+
+						<p:columnGroup type="header">
+							<p:row>
+								<p:column rowspan="3" headerText="Nombre" />
+								<p:column colspan="8" headerText="Quimestre 1" />
+								<p:column colspan="8" headerText="Quimestre 2" />
+								<p:column colspan="2" rowspan="2" headerText="Total" />
+								<p:column rowspan="3" headerText="Procentaje" />
+							</p:row>
+
+
+							<p:row>
+								<p:column headerText="Parcial 1" colspan="2" />
+								<p:column headerText="Parcial 2" colspan="2" />
+								<p:column headerText="Parcial 3" colspan="2" />
+								<p:column headerText="Parcial 4" colspan="2" />
+								<p:column headerText="Parcial 1" colspan="2" />
+								<p:column headerText="Parcial 2" colspan="2" />
+								<p:column headerText="Parcial 3" colspan="2" />
+								<p:column headerText="Parcial 4" colspan="2" />
+							</p:row>
+
+							<p:row>
+								<p:column headerText="J" />
+								<p:column headerText="I" />
+								<p:column headerText="J" />
+								<p:column headerText="I" />
+								<p:column headerText="J" />
+								<p:column headerText="I" />
+								<p:column headerText="J" />
+								<p:column headerText="I" />
+								<p:column headerText="J" />
+								<p:column headerText="I" />
+								<p:column headerText="J" />
+								<p:column headerText="I" />
+								<p:column headerText="J" />
+								<p:column headerText="I" />
+								<p:column headerText="J" />
+								<p:column headerText="I" />
+								<p:column headerText="J" />
+								<p:column headerText="I" />
+
+							</p:row>
+						</p:columnGroup>
+
+
+
+						<p:column>
+							<h:outputText value="#{persona.nombre}" />
+						</p:column>
+
+						<p:column>
+							<h:outputText value="#{persona.d1}" />
+						</p:column>
+						<p:column>
+							<h:outputText value="#{persona.d1j}" />
+						</p:column>
+						<p:column>
+							<h:outputText value="#{persona.d2}" />
+						</p:column>
+						<p:column>
+							<h:outputText value="#{persona.d2j}" />
+						</p:column>
+						<p:column>
+							<h:outputText value="#{persona.d3}" />
+						</p:column>
+						<p:column>
+							<h:outputText value="#{persona.d3j}" />
+						</p:column>
+						<p:column>
+							<h:outputText value="#{persona.d4}" />
+						</p:column>
+						<p:column>
+							<h:outputText value="#{persona.d4j}" />
+						</p:column>
+						<p:column>
+							<h:outputText value="#{persona.d5}" />
+						</p:column>
+						<p:column>
+							<h:outputText value="#{persona.d5j}" />
+						</p:column>
+						<p:column>
+							<h:outputText value="#{persona.d6}" />
+						</p:column>
+						<p:column>
+							<h:outputText value="#{persona.d6j}" />
+						</p:column>
+						<p:column>
+							<h:outputText value="#{persona.d7}" />
+						</p:column>
+						<p:column>
+							<h:outputText value="#{persona.d7j}" />
+						</p:column>
+						<p:column>
+							<h:outputText value="#{persona.d8}" />
+						</p:column>
+						<p:column>
+							<h:outputText value="#{persona.d8j}" />
+						</p:column>
+
+						<p:column>
+							<h:outputText value="#{persona.dt}"  style="width:25px"/>
+						</p:column>
+						<p:column>
+							<h:outputText value="#{persona.it}" style="width:25px"/>
+						</p:column>
+						<p:column>
+							<h:outputText value="#{persona.td}" />
+						</p:column>
+
+						<p:column>
+							<p:commandButton value="Justificar" onclick="justificar.show();">
+								<f:setPropertyActionListener value="#{persona}"
+									target="#{mockController.personasMockJ}" />
+							</p:commandButton>
+						</p:column>
+
+
+
+					</p:dataTable>
+					<p:dialog id="justificar" header="Justificar"
+						widgetVar="justificar">
+						<h:panelGrid columns="2">
+							<h:outputText value="Parcial" />
+							<p:selectOneMenu value="#{mockController.indexBimenestre}">
+								<p:ajax event="change" process="@this" />
+								<f:selectItems value="#{mockController.bimestreSelectItemList}">
+
+								</f:selectItems>
+							</p:selectOneMenu>
+							<h:outputText value="Cantidad de Días" />
+							<p:inputText value="#{mockController.cantidadJ}">
+								<p:ajax event="change" process="@this" />
+							</p:inputText>
+							<h:outputText value="Justificación" />
+							<p:inputTextarea cols="30">
+							</p:inputTextarea>
+							<p:commandButton action="#{mockController.justificar()}"
+								value="Aceptar" onclick="justificar.hide();" ajax="false">
+
+							</p:commandButton>
+							<p:commandButton value="Cancelar" onclick="justificar.hide()" />
+						</h:panelGrid>
+
+
+					</p:dialog>
+					<h:panelGrid columns="2">
+						<p:commandButton value="Guardar"
+							action="#{mockController.guardar()}"></p:commandButton>
+						<p:commandButton value="Cancelar"></p:commandButton>
+					</h:panelGrid>
+
+				</h:form>
+			</p:tab>
+
+
+
+		</p:tabView>
+	</ui:define>
+</ui:composition>

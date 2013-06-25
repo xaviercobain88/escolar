@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+#{busquedaCursoAction.init}
+<p:panel header="Búsqueda" toggleable="true" 
+	toggleOrientation="horizontal" >
+	<h:form id="formBusqueda">
+		<h:panelGrid columns="4">
+
+			<h:panelGrid columns="1" styleClass="panelesComboBox"
+				rendered="#{not empty busquedaCursoDM.seccionesSelectItems}">
+				<h:outputText value="Sección"
+					styleClass="ui-orderlist-caption ui-widget-header ui-corner-top" />
+				<p:selectOneListbox value="#{busquedaCursoDM.idSeccion}"
+					styleClass="subPanelesComboBox">
+					<f:selectItems value="#{busquedaCursoDM.seccionesSelectItems}"></f:selectItems>
+					<p:ajax update="formBusqueda" process="@this"
+						listener="#{busquedaCursoAction.seleccionarSeccion()}" />
+				</p:selectOneListbox>
+			</h:panelGrid>
+
+			<h:panelGrid columns="1" styleClass="panelesComboBox"
+				rendered="#{not empty busquedaCursoDM.subSeccionesSelectItems}">
+				<h:outputText value="Subsección"
+					styleClass="ui-orderlist-caption ui-widget-header ui-corner-top" />
+				<p:selectOneListbox value="#{busquedaCursoDM.idSubSeccion}" styleClass="subPanelesComboBox">
+					<f:selectItems value="#{busquedaCursoDM.subSeccionesSelectItems}"></f:selectItems>
+					<p:ajax update="formBusqueda" process="@this"
+						listener="#{busquedaCursoAction.seleccionarSubSeccion()}" />
+				</p:selectOneListbox>
+			</h:panelGrid>
+
+			<h:panelGrid columns="1" styleClass="panelesComboBox"
+				rendered="#{not empty busquedaCursoDM.especialidadesSelectItems}">
+				<h:outputText value="Especialidad"
+					styleClass="ui-orderlist-caption ui-widget-header ui-corner-top" />
+				<p:selectOneListbox value="#{busquedaCursoDM.idEspecialidad}" styleClass="subPanelesComboBox">
+					<f:selectItems value="#{busquedaCursoDM.especialidadesSelectItems}"></f:selectItems>
+					<p:ajax update="formBusqueda" process="@this"
+						listener="#{busquedaCursoAction.seleccionarEspecialidad()}" />
+				</p:selectOneListbox>
+			</h:panelGrid>
+
+			<h:panelGrid columns="1" styleClass="panelesComboBox"
+				rendered="#{not empty busquedaCursoDM.cursosSelectItems}">
+				<h:outputText value="Curso"
+					styleClass="ui-orderlist-caption ui-widget-header ui-corner-top" />
+				<p:selectOneListbox value="#{busquedaCursoDM.idCurso}" styleClass="subPanelesComboBox">
+					<f:selectItems value="#{busquedaCursoDM.cursosSelectItems}"></f:selectItems>
+				</p:selectOneListbox>
+			</h:panelGrid>
+
+		</h:panelGrid>
+
+		<p:commandButton value="Buscar"
+			action="#{busquedaCursoAction.buscar}" ajax="false"></p:commandButton>
+
+
+	</h:form>
+</p:panel>
+
+</html>
