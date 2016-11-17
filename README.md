@@ -31,7 +31,7 @@ Start JBoss Enterprise Application Platform 6 or JBoss AS 7.1
 
         For Linux:   JBOSS_HOME/bin/standalone.sh
         For Windows: JBOSS_HOME\bin\standalone.bat 
-
+ddd
 
 Build and Deploy the Quickstart
 -------------------------
