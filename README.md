@@ -30,7 +30,7 @@ Start JBoss Enterprise Application Platform 6 or JBoss AS 7.1
 2. The following shows the command line to start the server with the web profile:
 
         For Linux:   JBOSS_HOME/bin/standalone.sh
-        For Windows: JBOSS_HOME\bin\standalone.bat
+        For Windows: JBOSS_HOME\bin\standalone.bat 
 
 
 Build and Deploy the Quickstart
